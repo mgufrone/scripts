@@ -6,10 +6,12 @@ currentUser=$(whoami)
 echo mysql-server mysql-server/root_password password $userPassword | sudo debconf-set-selections
 echo mysql-server mysql-server/root_password_again password $userPassword | sudo debconf-set-selections
 sudo apt-get install mysql-common mysql-client mysql-server -y
-sudo apt-get install php5 php5-common php5-curl php5-mysql php5-json php5-xdebug -y
+sudo apt-get install php5 php5-common php5-curl php5-mysql php5-gd php5-json php5-xdebug -y
 sudo apt-get install nodejs -y
 sudo a2enmod rewrite deflate userdir  
 sudo apt-get install curl -y
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin
+sudo ln -s /usr/bin/composer.phar /usr/bin/composer
 cd /tmp
 sudo wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz
 sudo tar -xvzf ruby-2.0.0-p353.tar.gz
