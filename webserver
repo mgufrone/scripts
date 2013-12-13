@@ -1,3 +1,4 @@
+sudo apt-get build-dep php5 php5-dev ruby
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update -y
 sudo apt-get install git git-core -y
@@ -6,7 +7,7 @@ currentUser=$(whoami)
 echo mysql-server mysql-server/root_password password $userPassword | sudo debconf-set-selections
 echo mysql-server mysql-server/root_password_again password $userPassword | sudo debconf-set-selections
 sudo apt-get install mysql-common mysql-client mysql-server -y
-sudo apt-get install php5 php5-common php5-curl php5-mysql php5-gd php5-json php5-xdebug -y
+sudo apt-get install php5 php5-dev php5-common php5-curl php5-mysql php5-gd php5-json php5-xdebug -y
 sudo apt-get install nodejs -y
 sudo a2enmod rewrite deflate userdir  
 sudo apt-get install curl -y
@@ -18,7 +19,10 @@ sudo tar -xvzf ruby-2.0.0-p353.tar.gz
 cd ruby-2.0.0-p353
 sudo ./configure && sudo make && sudo make install
 sudo gem update --system
-sudo gem install bundler
-sudo gem install rails
+sudo gem install bundler -V
+sudo gem install rails -V
 sudo npm install -g grunt-cli bower
+sudo apt-get install php-pear
+sudo pear config-set auto_discover 1
+sudo pear install --alldeps pear.phpunit.de/PHPUnit
 sudo service apache2 restart
